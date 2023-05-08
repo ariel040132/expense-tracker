@@ -1,0 +1,70 @@
+<!-- index.hbs -->
+<h3 class="mb-1 expense-show-title">編輯支出 - {{expenses.name}}</h3>
+<div class="edit-from-container">
+  <form
+    action="/expense/{{expenses._id}}?_method=PUT"
+    method="POST"
+    style="display: inline;"
+  >
+    <div class="input-group">
+      <label for="name">名稱：</label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        placeholder="蒲公英酒"
+        value="{{expenses.name}}"
+        required
+      />
+
+      <label for="date">日期：</label>
+      <input
+        type="date"
+        name="date"
+        id="date"
+        value="{{expenses.date}}"
+        required
+      />
+      <div class="mb-3">
+        <label for="category" class="form-label">類別<span
+            class="text-danger"
+          >*</span></label>
+        <input
+          type="text"
+          class="form-control"
+          id="category"
+          placeholder="飲料"
+          list="categoryOptions"
+          name="category"
+          value="{{expenses.category}}"
+          required
+        />
+        {{! 使用datalist，讓使用者可選擇或自行輸入 }}
+        <datalist id="categoryOptions">
+          <option value="">請選擇類別</option>
+          <option value="food">食品</option>
+          <option value="drink">飲料</option>
+          <option value="transfer">交通</option>
+          <option value="shopping">購物</option>
+          <option value="medical">醫療</option>
+          <option value="necessities">日用品</option>
+          <option value="entertainment">娛樂</option>
+          <option value="rent">租金</option>
+          <option value="social">社交</option>
+          <option value="digital product">數位產品</option>
+        </datalist>
+      </div>
+
+      <label for="amount">金額：</label>
+      <input
+        type="number"
+        name="amount"
+        id="amount"
+        value="{{expenses.amount}}"
+        required
+      />
+      <button type="submit" class="btn btn-success">更新支出</button>
+    </div>
+
+  </form>
+</div>

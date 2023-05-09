@@ -4,10 +4,11 @@ const routes = require("./routes");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const session = require("express-session");
-const port = process.env.PORT || 3000;
+const port = Number(process.env.PORT || 3000);
 const usePassport = require("./config/passport");
 const flash = require("connect-flash");
-
+// const Handlebars = require("handlebars");
+// const helpers = require("./public/javascripts/helper");
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
@@ -15,6 +16,8 @@ require("./config/mongoose");
 
 //====app.setting====
 const app = express();
+
+// 自定義 "eq" helper
 
 app.use(bodyParser.urlencoded({ extended: false }));
 // 增加取得圖示的helper
@@ -30,6 +33,7 @@ app.engine(
   })
 );
 app.set("view engine", "handlebars");
+// Handlebars.registerHelper(helpers);
 app.use(methodOverride("_method"));
 app.use(
   session({

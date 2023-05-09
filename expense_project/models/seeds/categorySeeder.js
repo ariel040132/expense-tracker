@@ -11,7 +11,7 @@ db.once("open", () => {
       return Category.create({ ...item });
     })
   )
-    .then((data) => console.log("Data is :", data))
+    .then((data) => console.log("category seeds is done!"))
     // Category.create(categoryJson)
     //   .then(() => {
     //     console.log("CategorySeeder done!");

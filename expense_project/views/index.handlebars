@@ -1,12 +1,10 @@
 <div class="index-container d-inline-flex p-2 bd-highlight">
-   <div class="sort-group">
+  <div class="sort-group">
     <select class="form-select" id="sort-select" name="sort">
       <option value="">All</option>
-      {{#each Category}}
-      <option value="{{this._id}}" id="{{this._id}}">{{this.name}}</option>
-      {{/each}}
+      {{>category}}
     </select>
-  </div> 
+  </div>
 
   {{! <script>
     const sortSelect = document.getElementById('sort-select');
@@ -21,14 +19,15 @@
 
       <ul class="list-group list-group-flush">
         {{#each expenses}}
-        {{getImage this.category ../category_image}}
+
           <li class="list-group-item">
             <div class="row">
               <div class="col-auto me-auto">
+
                 <div
                   class="col-2 d-flex justify-content-center align-items-center"
                 >
-                  {{category_image}}
+                  {{category.icon}}
                 </div>
                 <div
                   class="col-2 d-flex justify-content-center align-items-center"
@@ -38,7 +37,7 @@
                 <div
                   class="col-2 d-flex justify-content-center align-items-center"
                 >
-                  {{this.dateFormat}}
+                  {{this.date}}
                 </div>
                 <div
                   class="col-2 d-flex justify-content-center align-items-center"

@@ -11,10 +11,6 @@ const expenseSchema = new Schema({
     type: Date,
     required: true,
   },
-  category: {
-    type: String,
-    required: true,
-  },
   amount: {
     type: Number,
     required: true,
@@ -26,12 +22,11 @@ const expenseSchema = new Schema({
     required: true,
   },
   userId: {
-    // 加入關聯設定
     type: Schema.Types.ObjectId,
     ref: "User",
     index: true,
     required: true,
   },
 });
-//匯出mongoose的語法，透過module.exports輸出
+
 module.exports = mongoose.model("expense", expenseSchema);

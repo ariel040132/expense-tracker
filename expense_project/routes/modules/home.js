@@ -5,10 +5,17 @@ const Category = require("../../models/category");
 
 router.get("/", (req, res) => {
   const userId = req.user._id;
+
   Expense.find({ userId })
+
     .lean()
+    .sort({ _id: "asc" })
     .then((expenses) => {
-      res.render("index", { expenses, Category });
+      Category.find()
+        .lean()
+        .then((category) => {
+          res.render("index", { expenses, category });
+        });
     })
     .catch((err) => console.log(err));
 });

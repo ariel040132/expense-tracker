@@ -9,7 +9,7 @@
         type="text"
         name="name"
         id="name"
-        placeholder="蒲公英酒"
+        placeholder="請輸入一筆支出"
         required
       />
 
@@ -18,8 +18,9 @@
 
       <label for="category">類別：</label>
       <select name="category" id="category" required>
-        <option value="">Open this select menu</option>
-                  {{> category}}
+        <option selected disabled value="">All</option>
+        {{>category}}
+
       </select>
       <label for="amount">金額：</label>
       <input type="number" name="amount" id="amount" required />
